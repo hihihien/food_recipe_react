@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styled from 'styled-components';
 
 function Searched() {
 
@@ -21,7 +22,7 @@ function Searched() {
 
     return (
     <Grid>
-        {searchedRecipes.map((iten) => {
+        {searchedRecipes.map((item) => {
             return(
                 <Card key={item.id}>
                     <img src={item.image} alt="" />
