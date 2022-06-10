@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import  { motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
-import { GiRodOfAsclepius } from 'react-icons/gi';
-import { FaBorderNone, FaCentercode } from 'react-icons/fa';
 
 function Cuisine() {
 
@@ -25,12 +23,19 @@ function Cuisine() {
   
   
     return (
-        <Grid>
+        <Grid
+            animate= {{opacity: 1}}
+            initial= {{opacity: 0}}
+            exit= {{opacity: 0}}
+            transition= {{opacity: 0.5}}
+        >
         {cuisine.map((item) => {
             return (
-                <Card>
-                    <img src={item.img} alt="" />
+                <Card key={item.id}>
+                <Link to={"/recipe/" + item.id}>
+                    <img src={item.image} alt="" />
                     <h4>{item.title}</h4>
+                </Link>
                 </Card>
             )
         })}
@@ -38,7 +43,7 @@ function Cuisine() {
     )
     
 }
-const Grid = styled.div `
+const Grid = styled(motion.div) `
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     grid-grap: 3rem;

@@ -24,7 +24,7 @@ function Search() {
           value={input}
         />
       </div>
-      <h1>{input}</h1>
+      
     </FormStyle>
   );
 }

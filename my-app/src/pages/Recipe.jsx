@@ -38,6 +38,19 @@ function Recipe() {
             >
                 Ingredients
             </Button>
+            {activeTab === 'instructions' && (
+                <div>
+                    <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
+                    <h3 dangerouslySetInnerHTML={{ __html: details.instructions }}></h3>
+                </div>
+            )}
+            {activeTab === 'ingredients' && (
+                <ul>
+                    {details.extendedIngrediets.map((ingredient) => (
+                        <li key={ingredient.id}>{ingredient.original}</li>
+                    ))}
+                </ul>     
+            )}
         </Info>
     
     </DetailWrapper>
@@ -65,7 +78,7 @@ const DetailWrapper = styled.div `
     }
 `;
 
-const Button = styled.buton`
+const Button = styled.button`
     padding: 1rem 2rem;
     color: #313131;
     background: white;
